@@ -3,9 +3,9 @@ Mage-Hackathon site
 
 What is it for?
 ---------------
-Samian Luszczymak began to organise Magentho Hackathons, thanks for that! The first one were
-in Munich and the registration was realised with some social-network-media-foo
-and was really slow on performance.
+Damian Luszczymak began organizing Magentho Hackathons in the beginning of 2012, 
+thanks for that! The first one took place in Munich and the registration was 
+realised with some social-network-media-foo and was really slow on performance.
 
 I (Fabian Blechschmidt) want to play around wth Symfony2 and the Paypal-API,
 so I do something useful and write a small site to get informations and to
