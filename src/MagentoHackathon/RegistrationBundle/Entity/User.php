@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MagentoHackathon\RegistrationBundle\Entity\User
  */
-class User
-{
+class User {
 
     const STATUS_REGISTERED = 0;
     /**
@@ -43,6 +42,11 @@ class User
      * @var string $city
      */
     private $city;
+
+    /**
+     * @var string $country
+     */
+    private $country;
 
     /**
      * @var string $additionalInfos
@@ -85,18 +89,16 @@ class User
      *
      * @param string $firstname
      */
-    public function setFirstname($firstname)
-    {
+    public function setFirstname($firstname) {
         $this->firstname = $firstname;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
-    public function getFirstname()
-    {
+    public function getFirstname() {
         return $this->firstname;
     }
 
@@ -105,18 +107,16 @@ class User
      *
      * @param string $lastname
      */
-    public function setLastname($lastname)
-    {
+    public function setLastname($lastname) {
         $this->lastname = $lastname;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
-    public function getLastname()
-    {
+    public function getLastname() {
         return $this->lastname;
     }
 
@@ -125,18 +125,16 @@ class User
      *
      * @param string $address
      */
-    public function setAddress($address)
-    {
+    public function setAddress($address) {
         $this->address = $address;
     }
 
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
-    public function getAddress()
-    {
+    public function getAddress() {
         return $this->address;
     }
 
@@ -145,18 +143,16 @@ class User
      *
      * @param string $zip
      */
-    public function setZip($zip)
-    {
+    public function setZip($zip) {
         $this->zip = $zip;
     }
 
     /**
      * Get zip
      *
-     * @return string 
+     * @return string
      */
-    public function getZip()
-    {
+    public function getZip() {
         return $this->zip;
     }
 
@@ -165,18 +161,16 @@ class User
      *
      * @param string $city
      */
-    public function setCity($city)
-    {
+    public function setCity($city) {
         $this->city = $city;
     }
 
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
-    public function getCity()
-    {
+    public function getCity() {
         return $this->city;
     }
 
@@ -185,18 +179,16 @@ class User
      *
      * @param string $additionalInfos
      */
-    public function setAdditionalInfos($additionalInfos)
-    {
+    public function setAdditionalInfos($additionalInfos) {
         $this->additionalInfos = $additionalInfos;
     }
 
     /**
      * Get additionalInfos
      *
-     * @return string 
+     * @return string
      */
-    public function getAdditionalInfos()
-    {
+    public function getAdditionalInfos() {
         return $this->additionalInfos;
     }
 
@@ -205,18 +197,16 @@ class User
      *
      * @param text $memo
      */
-    public function setMemo($memo)
-    {
+    public function setMemo($memo) {
         $this->memo = $memo;
     }
 
     /**
      * Get memo
      *
-     * @return text 
+     * @return text
      */
-    public function getMemo()
-    {
+    public function getMemo() {
         return $this->memo;
     }
 
@@ -225,18 +215,16 @@ class User
      *
      * @param integer $status
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
     }
 
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -245,18 +233,16 @@ class User
      *
      * @param float $paid
      */
-    public function setPaid($paid)
-    {
+    public function setPaid($paid) {
         $this->paid = $paid;
     }
 
     /**
      * Get paid
      *
-     * @return float 
+     * @return float
      */
-    public function getPaid()
-    {
+    public function getPaid() {
         return $this->paid;
     }
 
@@ -265,28 +251,25 @@ class User
      *
      * @param integer $paymentStatus
      */
-    public function setPaymentStatus($paymentStatus)
-    {
+    public function setPaymentStatus($paymentStatus) {
         $this->paymentStatus = $paymentStatus;
     }
 
     /**
      * Get paymentStatus
      *
-     * @return integer 
+     * @return integer
      */
-    public function getPaymentStatus()
-    {
+    public function getPaymentStatus() {
         return $this->paymentStatus;
     }
 
     /**
      * Get userId
      *
-     * @return integer 
+     * @return integer
      */
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->userId;
     }
 
@@ -295,8 +278,7 @@ class User
      *
      * @param \MagentoHackathon\RegistrationBundle\Entity\Event $event
      */
-    public function setEvent(\MagentoHackathon\RegistrationBundle\Entity\Event $event)
-    {
+    public function setEvent(\MagentoHackathon\RegistrationBundle\Entity\Event $event) {
         $this->event = $event;
     }
 
@@ -305,8 +287,25 @@ class User
      *
      * @return \MagentoHackathon\RegistrationBundle\Entity\Event
      */
-    public function getEvent()
-    {
+    public function getEvent() {
         return $this->event;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     */
+    public function setCountry($country) {
+        $this->country = $country;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry() {
+        return $this->country;
     }
 }

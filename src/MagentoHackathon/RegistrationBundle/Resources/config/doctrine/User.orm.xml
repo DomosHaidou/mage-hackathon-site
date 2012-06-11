@@ -12,6 +12,7 @@
         <field name="address" type="string" column="address" length="127"/>
         <field name="zip" type="string" column="zip" length="15"/>
         <field name="city" type="string" column="city" length="31"/>
+        <field name="country" type="string" column="country" length="3"/>
         <field name="additionalInfos" type="string" column="additional_infos" length="255"/>
         <field name="memo" type="text" column="memo"/>
         <field name="status" type="integer" column="status"/>
