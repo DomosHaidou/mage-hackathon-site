@@ -8,3 +8,4 @@ app/cache/*
 app/logs/*
 vendor/
 app/config/parameters.ini
+doc/mageHackathonSchema.mwb.bak
