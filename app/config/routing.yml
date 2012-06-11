@@ -1,0 +1,28 @@
+MagentoHackathonRegistrationBundle:
+    resource: "@MagentoHackathonRegistrationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Default:index }
+
+_imprint:
+    pattern:  /imprint
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Default:imprint }
+
+_about:
+    pattern:  /about
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Default:about }
+
+_registration:
+    pattern:  /register
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Register:index }
+
+_thanks:
+    pattern:  /register/thanks
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Register:thanks }
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
