@@ -169,4 +169,54 @@ class Event {
     public function __toString() {
         return $this->getName();
     }
+    /**
+     * @var datetime $date_from
+     */
+    private $date_from;
+
+    /**
+     * @var datetime $date_to
+     */
+    private $date_to;
+
+
+    /**
+     * Set date_from
+     *
+     * @param datetime $dateFrom
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->date_from = $dateFrom;
+    }
+
+    /**
+     * Get date_from
+     *
+     * @return datetime 
+     */
+    public function getDateFrom()
+    {
+        return $this->date_from;
+    }
+
+    /**
+     * Set date_to
+     *
+     * @param datetime $dateTo
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->date_to = $dateTo;
+    }
+
+    /**
+     * Get date_to
+     *
+     * @return datetime 
+     */
+    public function getDateTo()
+    {
+        return $this->date_to;
+    }
 }
