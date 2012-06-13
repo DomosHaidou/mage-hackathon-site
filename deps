@@ -61,3 +61,23 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.1
+
+[RuianTwitterBootstrapBundle]
+    git=git://github.com/ruian/TwitterBootstrapBundle.git
+    version=origin/2.0.x
+    target=/bundles/Ruian/TwitterBootstrapBundle
+
+[TwitterBootstrap1]
+    git=git://github.com/twitter/bootstrap.git
+    target=/twitter/bootstrap/v1/
+    version=v1.4.0
+
+[TwitterBootstrap2]
+    git=git://github.com/twitter/bootstrap.git
+    target=/twitter/bootstrap/v2/
+    version=v2.0.0
+
+[lessphp]
+    git=git://github.com/leafo/lessphp.git
+    target=/lessphp/
+    version=origin/master

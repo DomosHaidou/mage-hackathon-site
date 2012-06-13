@@ -21,14 +21,11 @@ class RegisterController extends Controller {
 
             if($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
-				// Nur für Testzwecke
-				$user->setStatus(0);
-				$user->setPaid(0);
-				$user->setPaymentStatus(0);
-				// Testzwecke ENDE
+
+                $user->setPaid(0)->setPaymentStatus(User::PAYMENT_STATUS_NOT_PAID)->setStatus(User::STATUS_REGISTERED);
+
                 $em->persist($user);
                 $em->flush();
-
 
                 return $this->redirect($this->generateUrl('_thanks'));
             }

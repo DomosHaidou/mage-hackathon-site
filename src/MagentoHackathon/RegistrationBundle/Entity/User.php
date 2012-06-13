@@ -54,7 +54,7 @@ class User {
     private $additionalInfos;
 
     /**
-     * @var text $memo
+     * @var string $memo
      */
     private $memo;
 
@@ -79,7 +79,7 @@ class User {
     private $userId;
 
     /**
-     * @var MagentoHackathon\RegistrationBundle\Entity\Event
+     * @var Event
      */
     private $event;
 
@@ -88,9 +88,11 @@ class User {
      * Set firstname
      *
      * @param string $firstname
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setFirstname($firstname) {
         $this->firstname = $firstname;
+        return $this;
     }
 
     /**
@@ -106,9 +108,11 @@ class User {
      * Set lastname
      *
      * @param string $lastname
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setLastname($lastname) {
         $this->lastname = $lastname;
+        return $this;
     }
 
     /**
@@ -124,9 +128,11 @@ class User {
      * Set address
      *
      * @param string $address
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setAddress($address) {
         $this->address = $address;
+        return $this;
     }
 
     /**
@@ -142,9 +148,11 @@ class User {
      * Set zip
      *
      * @param string $zip
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setZip($zip) {
         $this->zip = $zip;
+        return $this;
     }
 
     /**
@@ -160,9 +168,11 @@ class User {
      * Set city
      *
      * @param string $city
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setCity($city) {
         $this->city = $city;
+        return $this;
     }
 
     /**
@@ -178,9 +188,11 @@ class User {
      * Set additionalInfos
      *
      * @param string $additionalInfos
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setAdditionalInfos($additionalInfos) {
         $this->additionalInfos = $additionalInfos;
+        return $this;
     }
 
     /**
@@ -195,16 +207,18 @@ class User {
     /**
      * Set memo
      *
-     * @param text $memo
+     * @param string $memo
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setMemo($memo) {
         $this->memo = $memo;
+        return $this;
     }
 
     /**
      * Get memo
      *
-     * @return text
+     * @return string
      */
     public function getMemo() {
         return $this->memo;
@@ -214,9 +228,11 @@ class User {
      * Set status
      *
      * @param integer $status
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setStatus($status) {
         $this->status = $status;
+        return $this;
     }
 
     /**
@@ -232,9 +248,11 @@ class User {
      * Set paid
      *
      * @param float $paid
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setPaid($paid) {
         $this->paid = $paid;
+        return $this;
     }
 
     /**
@@ -250,9 +268,11 @@ class User {
      * Set paymentStatus
      *
      * @param integer $paymentStatus
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setPaymentStatus($paymentStatus) {
         $this->paymentStatus = $paymentStatus;
+        return $this;
     }
 
     /**
@@ -277,9 +297,11 @@ class User {
      * Set event
      *
      * @param \MagentoHackathon\RegistrationBundle\Entity\Event $event
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setEvent(\MagentoHackathon\RegistrationBundle\Entity\Event $event) {
         $this->event = $event;
+        return $this;
     }
 
     /**
@@ -295,9 +317,11 @@ class User {
      * Set country
      *
      * @param string $country
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setCountry($country) {
         $this->country = $country;
+        return $this;
     }
 
     /**

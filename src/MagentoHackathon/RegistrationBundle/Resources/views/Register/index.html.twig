@@ -1,7 +1,17 @@
 {% extends "::base.html.twig" %}
 {% block content %}
-<form action="{{ path('_registration') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="submit" />
-</form>
+<div class="row">
+    <div class="offset2 span8">
+
+        {% include 'RuianTwitterBootstrapBundle:Alert:bootstrap_v2.html.twig' %}
+
+        {% form_theme form 'RuianTwitterBootstrapBundle:Form:bootstrap_v2.html.twig' %}
+        <form novalidate class="form-horizontal well" method="post" action="{{ path('_registration') }}">
+            {{ form_widget(form) }}
+            <div class="well">
+                <input type="submit" value="Save" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -16,12 +16,9 @@ class UserType extends AbstractType
             ->add('zip')
             ->add('city')
 			->add('country')
-            
+            ->add('country', 'country')
             ->add('additionalInfos')
             ->add('memo')
-            //->add('status')
-            //->add('paid')
-            //->add('paymentStatus')
             ->add('event')
         ;
     }
