@@ -1,6 +1,30 @@
 Mage-Hackathon site
 ===================
 
+How to install?
+===============
+Update and install all the deps
+-------------------------------
+
+```shell
+./bin/vendors update
+or
+./bin/vendors install --reinstall
+```
+
+Init and compile twitter-bootstrap from source
+----------------------------------------------
+Replace VERSION by the supported version you want, v1 or v2
+
+```shell
+php5 app/console twitter-bootstrap:clear
+php5 app/console twitter-bootstrap:compile VERSION
+php5 app/console assets:install web/
+```
+
+More
+====
+
 What is it for?
 ---------------
 Damian Luszczymak began organizing Magentho Hackathons in the beginning of 2012, 
