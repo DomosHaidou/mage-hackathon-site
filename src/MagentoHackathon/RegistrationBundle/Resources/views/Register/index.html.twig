@@ -7,9 +7,10 @@
 
         {% form_theme form 'RuianTwitterBootstrapBundle:Form:bootstrap_v2.html.twig' %}
         <form novalidate class="form-horizontal well" method="post" action="{{ path('_registration') }}">
+            <legend>Registration for Magento Community-Event</legend>
             {{ form_widget(form) }}
-            <div class="well">
-                <input type="submit" value="Save" class="btn" />
+            <div class="form-actions">
+                <input type="submit" value="Register" class="btn"/>
             </div>
         </form>
     </div>
