@@ -58,3 +58,20 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+
+# PaypalIpnBundle Configuration
+orderly_pay_pal_ipn:
+
+    # If set to false then service loads settings with "sandbox_" prefix
+    islive:  false
+
+    # Constants for the live environment (default settings in Configuration.php)
+    email:   %paypal_live_email%
+    url:     https://www.paypal.com/cgi-bin/webscr
+    debug:   %kernel.debug%
+
+    # Constants for the sandbox environment (default settings in Configuration.php)
+    sandbox_email:   %paypal_dev_email%
+    sandbox_url:     https://www.sandbox.paypal.com/cgi-bin/webscr
+    sandbox_debug:   true

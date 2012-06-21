@@ -22,6 +22,10 @@ php5 app/console twitter-bootstrap:compile VERSION
 php5 app/console assets:install web/
 ```
 
+Install Symfony2 PayPal IPN Bundle
+----------------------------------
+https://github.com/orderly/symfony2-paypal-ipn#installation
+
 More
 ====
 

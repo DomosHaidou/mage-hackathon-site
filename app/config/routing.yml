@@ -19,8 +19,18 @@ _registration:
     defaults: { _controller: MagentoHackathonRegistrationBundle:Register:index }
 
 _thanks:
-    pattern:  /register/thanks
+    pattern:  /register/thanks/{eventId}/{userId}
     defaults: { _controller: MagentoHackathonRegistrationBundle:Register:thanks }
+
+OrderlyPayPalIpnBundleEmail:
+    resource: "@OrderlyPayPalIpnBundle/Controller/TwigNotificationEmailController.php"
+    type:     annotation
+    prefix:   /ipn/
+
+OrderlyPayPalIpnBundleEmail:
+    resource: "@OrderlyPayPalIpnBundle/Controller/NoNotificationController.php"
+    type:     annotation
+    prefix:   /ipn/
 
 # Internal routing configuration to handle ESI
 #_internal:

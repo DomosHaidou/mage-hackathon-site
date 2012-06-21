@@ -11,3 +11,6 @@
     mailer_password=""
     locale="de"
     secret="very secret secret."
+
+    paypal_live_email="mail@example.com"
+    paypal_dev_email="mail@example.com"

@@ -7,14 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MagentoHackathon\RegistrationBundle\Entity\Event
  */
-class Event {
+class Event
+{
 
     /**
      * @var \MagentoHackathon\RegistrationBundle\Entity\User
      */
     private $participants;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -24,19 +26,9 @@ class Event {
     private $name;
 
     /**
-     * @var text $description
+     * @var string $description
      */
     private $description;
-
-    /**
-     * @var datetime $from
-     */
-    private $from;
-
-    /**
-     * @var datetime $to
-     */
-    private $to;
 
     /**
      * @var float $price
@@ -48,13 +40,24 @@ class Event {
      */
     private $eventId;
 
+    /**
+     * @var \DateTime $date_from
+     */
+    private $date_from;
+
+    /**
+     * @var \DateTime $date_to
+     */
+    private $date_to;
+
 
     /**
      * Set name
      *
      * @param string $name
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
@@ -63,62 +66,29 @@ class Event {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
     /**
      * Set description
      *
-     * @param text $description
+     * @param string $description
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
     /**
      * Get description
      *
-     * @return text
+     * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
-    }
-
-    /**
-     * Set from
-     *
-     * @param datetime $from
-     */
-    public function setFrom($from) {
-        $this->from = $from;
-    }
-
-    /**
-     * Get from
-     *
-     * @return datetime
-     */
-    public function getFrom() {
-        return $this->from;
-    }
-
-    /**
-     * Set to
-     *
-     * @param datetime $to
-     */
-    public function setTo($to) {
-        $this->to = $to;
-    }
-
-    /**
-     * Get to
-     *
-     * @return datetime
-     */
-    public function getTo() {
-        return $this->to;
     }
 
     /**
@@ -126,7 +96,8 @@ class Event {
      *
      * @param float $price
      */
-    public function setPrice($price) {
+    public function setPrice($price)
+    {
         $this->price = $price;
     }
 
@@ -135,7 +106,8 @@ class Event {
      *
      * @return float
      */
-    public function getPrice() {
+    public function getPrice()
+    {
         return $this->price;
     }
 
@@ -144,7 +116,8 @@ class Event {
      *
      * @return integer
      */
-    public function getEventId() {
+    public function getEventId()
+    {
         return $this->eventId;
     }
 
@@ -153,7 +126,8 @@ class Event {
      *
      * @param User $participants
      */
-    public function addUser(\MagentoHackathon\RegistrationBundle\Entity\User $participants) {
+    public function addUser(\MagentoHackathon\RegistrationBundle\Entity\User $participants)
+    {
         $this->participants[] = $participants;
     }
 
@@ -162,28 +136,20 @@ class Event {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getParticipants() {
+    public function getParticipants()
+    {
         return $this->participants;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getName();
     }
-    /**
-     * @var datetime $date_from
-     */
-    private $date_from;
-
-    /**
-     * @var datetime $date_to
-     */
-    private $date_to;
-
 
     /**
      * Set date_from
      *
-     * @param datetime $dateFrom
+     * @param \DateTime $dateFrom
      */
     public function setDateFrom($dateFrom)
     {
@@ -193,7 +159,7 @@ class Event {
     /**
      * Get date_from
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getDateFrom()
     {
@@ -203,7 +169,7 @@ class Event {
     /**
      * Set date_to
      *
-     * @param datetime $dateTo
+     * @param \DateTime $dateTo
      */
     public function setDateTo($dateTo)
     {
@@ -213,7 +179,7 @@ class Event {
     /**
      * Get date_to
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getDateTo()
     {

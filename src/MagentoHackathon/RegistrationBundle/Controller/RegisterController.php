@@ -6,6 +6,7 @@ use \Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use \MagentoHackathon\RegistrationBundle\Form\UserType;
 use \MagentoHackathon\RegistrationBundle\Entity\User;
+use \MagentoHackathon\RegistrationBundle\Entity\Event;
 
 class RegisterController extends Controller {
 
@@ -27,7 +28,7 @@ class RegisterController extends Controller {
                 $em->persist($user);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('_thanks'));
+                return $this->redirect($this->generateUrl('_thanks', array('id' => $user->getEvent())));
             }
         }
 
@@ -37,7 +38,13 @@ class RegisterController extends Controller {
     /**
      * @Template
      */
-    public function thanksAction() {
-        return array();
+    public function thanksAction($eventId, $userId) {
+        /* @var $event Event */
+        $event = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')->find($eventId);
+        $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')->find($userId);
+        if($event === null) {
+            return $this->redirect($this->generateUrl('_welcome'));
+        }
+        return array('event' => $event, 'user' => $user, 'seller_mail' => $this->container->getParameter('orderly.paypalipn.email'));
     }
 }
