@@ -19,7 +19,7 @@ _registration:
     defaults: { _controller: MagentoHackathonRegistrationBundle:Register:index }
 
 _thanks:
-    pattern:  /register/thanks/{eventId}/{userId}
+    pattern:  /register/thanks
     defaults: { _controller: MagentoHackathonRegistrationBundle:Register:thanks }
 
 _ipn:

@@ -4,10 +4,15 @@ namespace MagentoHackathon\RegistrationBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \Symfony\Component\HttpFoundation\Request;
 use \Symfony\Component\HttpFoundation\Response;
+use \Symfony\Component\HttpFoundation\RedirectResponse;
+use \Symfony\Component\HttpFoundation\Session;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use \MagentoHackathon\RegistrationBundle\Form\UserType;
 use \MagentoHackathon\RegistrationBundle\Entity\User;
 use \MagentoHackathon\RegistrationBundle\Entity\Event;
+
 use \Orderly\PayPalIpnBundle\Ipn;
 
 class RegisterController extends Controller
@@ -36,7 +41,13 @@ class RegisterController extends Controller
 
                 $em->persist($user);
                 $em->flush();
-				return $this->redirect($this->generateUrl('_thanks', array('eventId' => $user->getEvent()->getEventId(), 'userId' => $user->getUserId())));
+                /* @var $session Session */
+                $session = $this->get('session');
+                $session->set('user', $user);
+
+                // TODO send mail and create action to pay later!
+
+                return $this->redirect($this->generateUrl('_thanks'));
             }
         }
 
@@ -46,14 +57,20 @@ class RegisterController extends Controller
     /**
      * @Template
      */
-    public function thanksAction($eventId, $userId)
+    public function thanksAction()
     {
-        /* @var $event Event */
-        $event = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')->find($eventId);
-        $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')->find($userId);
-        if ($event === null) {
-            return $this->redirect($this->generateUrl('_welcome'));
+        /* @var $session Session */
+        $session = $this->get('session');
+        /* @var $user User */
+        $user = $session->get('user');
+        // todo uncomment
+        //$session->remove('user');
+
+        if (!$user) {
+            return new RedirectResponse($this->generateUrl('_welcome'));
         }
+
+        $event = $user->getEvent();
         return array('event' => $event, 'user' => $user, 'seller_mail' => $this->container->getParameter('orderly.paypalipn.email'));
     }
 
