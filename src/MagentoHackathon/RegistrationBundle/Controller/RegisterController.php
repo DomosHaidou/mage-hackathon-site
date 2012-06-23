@@ -36,8 +36,7 @@ class RegisterController extends Controller
 
                 $em->persist($user);
                 $em->flush();
-
-                return $this->redirect($this->generateUrl('_thanks', array('id' => $user->getEvent())));
+				return $this->redirect($this->generateUrl('_thanks', array('eventId' => $user->getEvent()->getEventId(), 'userId' => $user->getUserId())));
             }
         }
 
