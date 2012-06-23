@@ -45,7 +45,20 @@ class RegisterController extends Controller
                 $session = $this->get('session');
                 $session->set('user', $user);
 
-                // TODO send mail and create action to pay later!
+                $mailParams = array(
+                    'userName' => $user->getFirstname(), // Name of the user
+                    'userId' => $user->getUserId(), // ID of the user
+                    'eventName' => $user->getEvent()->getName(), // Name of the event
+                    'dateFrom' => $user->getEvent()->getDateFrom()->format('Y-m-d h:i:s'), // starting date
+                    'dateTo' => $user->getEvent()->getDateTo()->format('Y-m-d h:i:s') //end date
+                );
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
+                    ->setFrom('info@mage-hackathon.de')
+                    ->setTo($user->getMail())
+                    ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams));
+                $this->get('mailer')->send($message);
 
                 return $this->redirect($this->generateUrl('_thanks'));
             }
@@ -57,14 +70,18 @@ class RegisterController extends Controller
     /**
      * @Template
      */
-    public function thanksAction()
+    public function thanksAction($userId)
     {
-        /* @var $session Session */
-        $session = $this->get('session');
-        /* @var $user User */
-        $user = $session->get('user');
-        // todo uncomment
-        //$session->remove('user');
+        $user = null;
+        if(!is_null($userId)) {
+            $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')->find($userId);
+        } else {
+            /* @var $session Session */
+            $session = $this->get('session');
+            /* @var $user User */
+            $user = $session->get('user');
+            $session->remove('user');
+        }
 
         if (!$user) {
             return new RedirectResponse($this->generateUrl('_welcome'));

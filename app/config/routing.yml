@@ -19,8 +19,8 @@ _registration:
     defaults: { _controller: MagentoHackathonRegistrationBundle:Register:index }
 
 _thanks:
-    pattern:  /register/thanks
-    defaults: { _controller: MagentoHackathonRegistrationBundle:Register:thanks }
+    pattern:  /register/thanks/{userId}
+    defaults: { _controller: MagentoHackathonRegistrationBundle:Register:thanks, userId: null }
 
 _ipn:
   pattern:  /ipn
