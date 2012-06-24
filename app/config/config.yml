@@ -59,6 +59,22 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
+monolog:
+    handlers:
+        mail:
+            type:         fingers_crossed
+            action_level: debug
+            handler:      buffered
+        buffered:
+            type:    buffer
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: error@mage-hackathon.de
+            to_email:   magehackathonerror@fabian-blechschmidt.de
+            subject:    Mage-Hackathon: ERROR
+            level:      debug
+
 # PaypalIpnBundle Configuration
 orderly_pay_pal_ipn:
 

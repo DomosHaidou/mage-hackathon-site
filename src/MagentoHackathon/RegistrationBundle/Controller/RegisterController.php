@@ -52,7 +52,7 @@ class RegisterController extends Controller
                     'dateFrom' => $user->getEvent()->getDateFrom()->format('Y-m-d h:i:s'), // starting date
                     'dateTo' => $user->getEvent()->getDateTo()->format('Y-m-d h:i:s') //end date
                 );
-
+                // TODO include double opt in mail?
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
                     ->setFrom('info@mage-hackathon.de')
@@ -73,7 +73,7 @@ class RegisterController extends Controller
     public function thanksAction($userId)
     {
         $user = null;
-        if(!is_null($userId)) {
+        if (!is_null($userId)) {
             $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')->find($userId);
         } else {
             /* @var $session Session */
@@ -113,14 +113,43 @@ class RegisterController extends Controller
 
             // Now let's check what the payment status is and act accordingly
             if ($this->paypal_ipn->getOrderStatus() == Ipn::PAID) {
-                /* HEALTH WARNING:
-                 *
-                 * Please note that this PAID block does nothing. In other words, this controller will not respond to a successful order
-                 * with any notification such as email or similar. You will have to identify paid orders by checking your database.
-                 *
-                 * If you want to send email notifications on successful receipt of an order, please see the alternative, Twig template-
-                 * based example controller: TwigEmailNotification.php
-                 */
+                $logger = $this->get('logger');
+                if (count($this->paypal_ipn->getOrderItems()) > 1) {
+                    /* @var $logger \Monolog\Logger */
+                    $logger->err('More than one order-item in IPN!');
+                } else {
+                    $orderItem = array_pop($this->paypal_ipn->getOrderItems());
+                    $order = $this->paypal_ipn->getOrder();
+                    /* @var $orderItem \Orderly\PayPalIpnBundle\Entity\IpnOrderItems */
+                    /* @var $order \Orderly\PayPalIpnBundle\Entity\IpnOrders */
+                    /* @var $user User */
+                    /* @var $vent Event */
+                    $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')
+                        ->find($orderItem->getItemNumber());
+
+                    $event = $user->getEvent();
+                    if ($order->getMcGross() + $order->getMcFee() == $event->getPrice()) {
+                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
+
+                    } elseif ($order->getMcGross() + $order->getMcFee() < $event->getPrice()) {
+                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID_NOT_ENOUGH);
+
+                    } else {
+                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
+                        $logger->addAlert($user->getFirstname() . ' ' . $user->getLastname() . ' paid too much!');
+                    }
+
+                    // TODO send mail to customer
+
+                    $em = $this->getDoctrine()->getEntityManager();
+
+                    $em->persist($user);
+                    $em->flush();
+                }
+
             }
 
         } else // Just redirect to the root URL
