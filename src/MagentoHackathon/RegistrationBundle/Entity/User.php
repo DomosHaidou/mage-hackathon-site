@@ -369,10 +369,12 @@ class User
      * Set mail
      *
      * @param string $mail
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
      */
     public function setMail($mail)
     {
         $this->mail = $mail;
+        return $this;
     }
 
     /**

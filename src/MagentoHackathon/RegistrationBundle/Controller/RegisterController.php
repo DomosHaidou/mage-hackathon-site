@@ -52,7 +52,7 @@ class RegisterController extends Controller
                     'dateFrom' => $user->getEvent()->getDateFrom()->format('Y-m-d h:i:s'), // starting date
                     'dateTo' => $user->getEvent()->getDateTo()->format('Y-m-d h:i:s') //end date
                 );
-                // TODO include double opt in mail?
+
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
                     ->setFrom('info@mage-hackathon.de')
@@ -142,7 +142,22 @@ class RegisterController extends Controller
                         $logger->addAlert($user->getFirstname() . ' ' . $user->getLastname() . ' paid too much!');
                     }
 
-                    // TODO send mail to customer
+                    $mailParams = array(
+                        'userName' => $user->getFirstname(), // Name of the user
+                        'userId' => $user->getUserId(), // ID of the user
+                        'eventName' => $event->getName(), // Name of the event
+                        'dateFrom' => $event->getDateFrom()->format('Y-m-d h:i:s'), // starting date
+                        'dateTo' => $event->getDateTo()->format('Y-m-d h:i:s'), //end date
+                        'amount' => $user->getPaid(),
+                        'price' => $event->getPrice()
+                    );
+
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
+                        ->setFrom('info@mage-hackathon.de')
+                        ->setTo($user->getMail())
+                        ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams));
+                    $this->get('mailer')->send($message);
 
                     $em = $this->getDoctrine()->getEntityManager();
 

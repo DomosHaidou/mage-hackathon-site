@@ -1,8 +1,8 @@
-Dear {{name}},
+Dear {{userName}},
 
 thank your for registrating for {{eventName}} from {{dateFrom}} to {{dateTo}}.
 
 If you have not yet paid for the event, just follow this link:
-{{url('_thanks')}}
+{{url('_thanks', {'userId': userId}) }}
 
 You get an email after your payment.
