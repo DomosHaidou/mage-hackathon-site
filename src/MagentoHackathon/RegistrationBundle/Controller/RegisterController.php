@@ -128,16 +128,16 @@ class RegisterController extends Controller
                         ->find($orderItem->getItemNumber());
 
                     $event = $user->getEvent();
-                    if ($order->getMcGross() + $order->getMcFee() == $event->getPrice()) {
-                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                    if ($user->getPaid() + $order->getMcGross() == $event->getPrice()) {
+                        $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
 
-                    } elseif ($order->getMcGross() + $order->getMcFee() < $event->getPrice()) {
-                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                    } elseif ($user->getPaid() + $order->getMcGross() < $event->getPrice()) {
+                        $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID_NOT_ENOUGH);
 
                     } else {
-                        $user->setPaid($user->getPaid() + $order->getMcGross() + $order->getMcFee())
+                        $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
                         $logger->addAlert($user->getFirstname() . ' ' . $user->getLastname() . ' paid too much!');
                     }
