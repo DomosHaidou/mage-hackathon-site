@@ -10,3 +10,9 @@ vendor/
 app/config/parameters.ini
 doc/mageHackathonSchema.mwb.bak
 *.php~
+.buildpath
+.project
+.settings
+.settings/**/*
+.externalToolBuilders
+.externalToolBuilders/**/*
