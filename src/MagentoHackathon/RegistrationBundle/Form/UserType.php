@@ -18,6 +18,7 @@ class UserType extends AbstractType
             ->add('city')
 			->add('country')
             ->add('country', 'country')
+            ->add('githubId')
             ->add('additionalInfos')
             ->add('memo')
             ->add('event')
