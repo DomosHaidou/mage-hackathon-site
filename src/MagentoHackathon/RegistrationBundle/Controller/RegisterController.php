@@ -156,7 +156,7 @@ class RegisterController extends Controller
                         ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
                         ->setFrom('info@mage-hackathon.de')
                         ->setTo($user->getMail())
-                        ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams));
+                        ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:paymentMail.txt.twig', $mailParams));
                     $this->get('mailer')->send($message);
 
                     $em = $this->getDoctrine()->getEntityManager();
