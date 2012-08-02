@@ -1,0 +1,28 @@
+MagentoHackathon\RegistrationBundle\Entity\User:
+  properties:
+    firstname:
+      - NotBlank: ~
+    lastname:
+      - NotBlank: ~
+    mail:
+      - NotBlank: ~
+      - Email: ~
+    address:
+      - NotBlank: ~
+    zip:
+      - NotBlank: ~
+    city:
+      - NotBlank: ~
+    country:
+      - NotBlank: ~
+    additionalInfos: []
+    memo: []
+    event:
+      - NotBlank: ~
+
+  getters:
+    eventLegal:
+      - "True": { message: "You have to choose an event to register for!" }
+
+
+

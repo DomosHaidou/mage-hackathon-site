@@ -10,7 +10,7 @@ framework:
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
-    validation:      { enable_annotations: true }
+#    validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     session:
         default_locale: %locale%
@@ -59,21 +59,21 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
-monolog:
-    handlers:
-        mail:
-            type:         fingers_crossed
-            action_level: debug
-            handler:      buffered
-        buffered:
-            type:    buffer
-            handler: swift
-        swift:
-            type:       swift_mailer
-            from_email: error@mage-hackathon.de
-            to_email:   magehackathonerror@fabian-blechschmidt.de
-            subject:    Mage-Hackathon: ERROR
-            level:      debug
+#monolog:
+#    handlers:
+#        mail:
+#            type:         fingers_crossed
+#            action_level: debug
+#            handler:      buffered
+#        buffered:
+#            type:    buffer
+#            handler: swift
+#        swift:
+#            type:       swift_mailer
+#            from_email: error@mage-hackathon.de
+#            to_email:   magehackathonerror@fabian-blechschmidt.de
+#            subject:    Mage-Hackathon: ERROR
+#            level:      debug
 
 # PaypalIpnBundle Configuration
 orderly_pay_pal_ipn:
