@@ -51,6 +51,11 @@ class User
     private $country;
 
     /**
+     * @var string $githubId
+     */
+    private $githubId;
+
+    /**
      * @var string $additionalInfos
      */
     private $additionalInfos;
@@ -198,6 +203,28 @@ class User
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set githubId
+     *
+     * @param string $githubId
+     * @return \MagentoHackathon\RegistrationBundle\Entity\User
+     */
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+        return $this;
+    }
+
+    /**
+     * Get githubId
+     *
+     * @return string
+     */
+    public function getGithubId()
+    {
+        return $this->githubId;
     }
 
     /**
