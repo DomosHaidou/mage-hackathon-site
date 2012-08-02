@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new MagentoHackathon\RegistrationBundle\MagentoHackathonRegistrationBundle(),
             new Ruian\TwitterBootstrapBundle\RuianTwitterBootstrapBundle(),
             new Orderly\PayPalIpnBundle\OrderlyPayPalIpnBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

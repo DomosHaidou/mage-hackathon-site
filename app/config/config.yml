@@ -90,3 +90,24 @@ orderly_pay_pal_ipn:
     sandbox_email:   %paypal_dev_email%
     sandbox_url:     https://www.sandbox.paypal.com/cgi-bin/webscr
     sandbox_debug:   true
+
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: ::knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default
+
+
+services:
+    magento_hackathon_registration.menu_builder:
+        class: MagentoHackathon\RegistrationBundle\Menu\MenuBuilder
+        arguments: [@knp_menu.factory,  @doctrine.orm.entity_manager]
+
+    magento_hackathon_registration.menu.main:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: magento_hackathon_registration.menu_builder
+        factory_method: createMainMenu
+        arguments: [@request]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu

@@ -6,6 +6,10 @@ _welcome:
     pattern:  /
     defaults: { _controller: MagentoHackathonRegistrationBundle:Default:index }
 
+_event_about:
+  pattern: /event/{eventId}/about
+  defaults: { _controller: MagentoHackathonRegistrationBundle:Default:eventAbout }
+
 _imprint:
     pattern:  /imprint
     defaults: { _controller: MagentoHackathonRegistrationBundle:Default:imprint }

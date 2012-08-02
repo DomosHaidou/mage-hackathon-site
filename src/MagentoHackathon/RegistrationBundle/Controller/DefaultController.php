@@ -23,6 +23,20 @@ class DefaultController extends Controller
     /**
      * @Template
      */
+    public function eventAboutAction($eventId) {
+        $event = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')
+        ->find($eventId);
+        if(!$event) {
+            return new \Symfony\Component\HttpFoundation\RedirectResponse($this->generateUrl('_welcome'));
+        }
+        return array('event' => $event);
+    }
+
+
+
+    /**
+     * @Template
+     */
     public function imprintAction() {
         return array();
     }
