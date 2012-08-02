@@ -386,4 +386,8 @@ class User
     {
         return $this->mail;
     }
+
+    public function isEventLegal() {
+        return (bool)$this->getEvent();
+    }
 }

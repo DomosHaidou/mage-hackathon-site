@@ -15,10 +15,16 @@ class Event
      */
     private $participants;
 
-    public function __construct()
-    {
-        $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    /**
+     * @var datetime $dateFrom
+     */
+    private $dateFrom;
+
+    /**
+     * @var datetime $dateTo
+     */
+    private $dateTo;
+
 
     /**
      * @var string $name
@@ -40,15 +46,10 @@ class Event
      */
     private $eventId;
 
-    /**
-     * @var \DateTime $date_from
-     */
-    private $date_from;
-
-    /**
-     * @var \DateTime $date_to
-     */
-    private $date_to;
+    public function __construct()
+    {
+        $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -141,48 +142,55 @@ class Event
         return $this->participants;
     }
 
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
     /**
-     * Set date_from
+     * Set dateFrom
      *
      * @param \DateTime $dateFrom
      */
     public function setDateFrom($dateFrom)
     {
-        $this->date_from = $dateFrom;
+        $this->dateFrom = $dateFrom;
     }
 
     /**
-     * Get date_from
+     * Get dateFrom
      *
      * @return \DateTime
      */
     public function getDateFrom()
     {
-        return $this->date_from;
+        return $this->dateFrom;
     }
 
     /**
-     * Set date_to
+     * Set dateTo
      *
      * @param \DateTime $dateTo
      */
     public function setDateTo($dateTo)
     {
-        $this->date_to = $dateTo;
+        $this->dateTo = $dateTo;
     }
 
     /**
-     * Get date_to
+     * Get dateTo
      *
      * @return \DateTime
      */
     public function getDateTo()
     {
-        return $this->date_to;
+        return $this->dateTo;
     }
+
+
+    /**
+     * Return the name of the event for string contextes
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
