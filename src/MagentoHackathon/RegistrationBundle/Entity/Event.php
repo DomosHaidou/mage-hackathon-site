@@ -32,6 +32,12 @@ class Event
     private $name;
 
     /**
+     * @var string $shortDescription
+     */
+    private $shortDescription;
+
+
+    /**
      * @var string $description
      */
     private $description;
@@ -51,6 +57,15 @@ class Event
         $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Return the name of the event for string contextes
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
      * Set name
@@ -184,13 +199,22 @@ class Event
 
 
     /**
-     * Return the name of the event for string contextes
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+    }
+
+    /**
+     * Get shortDescription
      *
      * @return string
      */
-    public function __toString()
+    public function getShortDescription()
     {
-        return $this->getName();
+        return $this->shortDescription;
     }
-
 }

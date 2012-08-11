@@ -10,7 +10,13 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('MagentoHackathonRegistrationBundle:Default:index.html.twig');
+        $events = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
+        ->where('e.dateFrom > CURRENT_TIMESTAMP()')
+        ->orderBy('e.dateFrom', 'DESC')
+        ->setMaxResults(3)
+        ->getQuery()->getResult();
+
+        return $this->render('MagentoHackathonRegistrationBundle:Default:index.html.twig', array('events' => $events));
     }
 
     /**

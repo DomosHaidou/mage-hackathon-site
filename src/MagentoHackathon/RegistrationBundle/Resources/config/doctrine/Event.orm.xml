@@ -6,11 +6,11 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45"/>
+    <field name="shortDescription" type="string" column="short_description" length="255"/>
     <field name="description" type="text" column="description"/>
     <field name="dateFrom" type="datetime" column="date_from"/>
     <field name="dateTo" type="datetime" column="date_to"/>
     <field name="price" type="float" column="price"/>
     <lifecycle-callbacks/>
-      <one-to-many field="participants" target-entity="User" mapped-by="event_id" />
   </entity>
 </doctrine-mapping>

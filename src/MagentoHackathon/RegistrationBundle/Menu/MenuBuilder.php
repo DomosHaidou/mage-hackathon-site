@@ -60,7 +60,7 @@ class MenuBuilder
             ));
         }
 
-        $menu->addChild('Impressum', array('route' => '_imprint'));
+        $menu->addChild('Imprint', array('route' => '_imprint'));
 
         return $menu;
     }

@@ -2,19 +2,29 @@ MagentoHackathon\RegistrationBundle\Entity\User:
   properties:
     firstname:
       - NotBlank: ~
+      - MaxLength: 63
     lastname:
       - NotBlank: ~
+      - MaxLength: 63
     mail:
       - NotBlank: ~
       - Email: ~
+      - MaxLength: 255
     address:
       - NotBlank: ~
+      - MaxLength: 127
     zip:
       - NotBlank: ~
+      - MaxLength: 15
     city:
       - NotBlank: ~
+      - MaxLength: 31
     country:
       - NotBlank: ~
+      - MaxLength: 3
+      - Country: ~
+    githubId:
+      - MaxLength: 255
     additionalInfos: []
     memo: []
     event:

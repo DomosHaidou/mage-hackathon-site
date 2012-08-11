@@ -35,13 +35,16 @@ class UserType extends AbstractType
             'label' => 'Country',
         ))
         ->add('githubId', null, array(
-            'label' => 'github-ID'
+            'label' => 'github-ID',
+            'required' => false
         ))
         ->add('additionalInfos', null, array(
             'label' => 'c/o, etc.',
+            'required' => false
         ))
         ->add('memo', null, array(
             'label' => "Memo, e.g. you are vegetarian",
+            'required' => false
         ));
     }
 
