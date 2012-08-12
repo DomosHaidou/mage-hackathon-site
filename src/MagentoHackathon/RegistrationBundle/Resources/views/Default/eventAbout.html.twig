@@ -1,4 +1,5 @@
 {% extends "::base.html.twig" %}
 {% block content %}
-Event: {{event.name}}
+<h1>{{event.name}}</h1>
+{{event.description|raw}}
 {% endblock %}

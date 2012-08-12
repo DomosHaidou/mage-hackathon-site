@@ -43,7 +43,7 @@ class MenuBuilder
         $menu->setChildrenAttributes(array('class' => 'nav'));
 
         $menu->addChild('Home', array('route' => '_welcome'));
-        $menu->addChild('What are Magentho Hackathons?', array('route' => '_welcome'));
+        $menu->addChild('What is a Magento Hackathon?', array('route' => '_about'));
         $menu->addChild('Registration', array('route' => '_registration'));
 
         $events = $this->em->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
