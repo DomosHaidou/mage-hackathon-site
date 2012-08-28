@@ -2,6 +2,8 @@
 {% block content %}
 {% if user.paymentStatus == constant('MagentoHackathon\\RegistrationBundle\\Entity\\User::PAYMENT_STATUS_PAID') %}
         <p>Thanks for your registration, your payment is complete.</p>
+{% elseif seller_mail is empty %}
+<p>Thanks for your registration. The event has no paypal email address attached. Please send the {{event.price}} € via wire transfert.</p>
 {% else %}
 <form action="{{paypalUrl}}" method="post">
     <p>Thanks for your registration. If you want, you can now pay your fee of {{event.price}} €:</p>

@@ -48,7 +48,7 @@ class MenuBuilder
 
         $events = $this->em->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
         ->where('e.dateFrom > CURRENT_TIMESTAMP()')
-        ->orderBy('e.dateFrom', 'DESC')
+        ->orderBy('e.dateFrom', 'ASC')
         ->setMaxResults(2)
         ->getQuery()->getResult();
 

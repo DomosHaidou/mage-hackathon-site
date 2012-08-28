@@ -52,6 +52,11 @@ class Event
      */
     private $eventId;
 
+    /**
+     * @var string $paypalEmail
+     */
+    private $paypalEmail;
+
     public function __construct()
     {
         $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
@@ -216,5 +221,25 @@ class Event
     public function getShortDescription()
     {
         return $this->shortDescription;
+    }
+
+    /**
+     * Set paypalEmail
+     *
+     * @param string $paypalEmail
+     */
+    public function setPaypalEmail($paypalEmail)
+    {
+        $this->paypalEmail = $paypalEmail;
+    }
+
+    /**
+     * Get paypalEmail
+     *
+     * @return string 
+     */
+    public function getPaypalEmail()
+    {
+        return $this->paypalEmail;
     }
 }

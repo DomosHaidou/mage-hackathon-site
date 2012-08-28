@@ -90,7 +90,8 @@ class RegisterController extends Controller
         $event = $user->getEvent();
         return array('event' => $event, 'user' => $user,
             'paypalUrl' => $this->container->getParameter('orderly.paypalipn.url'),
-            'seller_mail' => $this->container->getParameter('orderly.paypalipn.email')
+            //'seller_mail' => $this->container->getParameter('orderly.paypalipn.email')
+            'seller_mail' => $event->getPaypalEmail(),
         );
     }
 
