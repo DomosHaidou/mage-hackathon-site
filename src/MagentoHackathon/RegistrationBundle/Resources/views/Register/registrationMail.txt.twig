@@ -1,6 +1,6 @@
 Dear {{userName}},
 
-thank your for registrating for {{eventName}} from {{dateFrom}} to {{dateTo}}.
+thank your for registrating for {{eventName}} from {{dateFrom|date("d-m-Y")}} to {{dateTo|date("d-m-Y")}}.
 
 If you have not yet paid for the event, just follow this link:
 {{url('_thanks', {'userId': userId}) }}

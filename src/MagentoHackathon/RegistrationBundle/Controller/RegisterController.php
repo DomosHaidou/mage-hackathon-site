@@ -101,25 +101,31 @@ class RegisterController extends Controller
      */
     public function ipnAction()
     {
+        /* @var $logger \Monolog\Logger */
+        $logger = $this->get('logger');
+        $logger->addDebug('got IPN');
         //getting ipn service registered in container
         $this->paypal_ipn = $this->get('orderly_pay_pal_ipn');
 
         //validate ipn (generating response on PayPal IPN request)
         if ($this->paypal_ipn->validateIPN()) {
+
             // Succeeded, now let's extract the order
             $this->paypal_ipn->extractOrder();
-
+            $logger->addDebug('extractOrder');
             // And we save the order now (persist and extract are separate because you might only want to persist the order in certain circumstances).
             $this->paypal_ipn->saveOrder();
-
+            $logger->addDebug('saveOrder');
             // Now let's check what the payment status is and act accordingly
             if ($this->paypal_ipn->getOrderStatus() == Ipn::PAID) {
-                $logger = $this->get('logger');
+                $logger->addDebug('orderStatus == PAID');
                 if (count($this->paypal_ipn->getOrderItems()) > 1) {
-                    /* @var $logger \Monolog\Logger */
+
                     $logger->err('More than one order-item in IPN!');
                 } else {
-                    $orderItem = array_pop($this->paypal_ipn->getOrderItems());
+                    $logger->addDebug('Not more than one item in IPN');
+                    $orderItems = $this->paypal_ipn->getOrderItems();
+                    $orderItem = array_pop($orderItems);
                     $order = $this->paypal_ipn->getOrder();
                     /* @var $orderItem \Orderly\PayPalIpnBundle\Entity\IpnOrderItems */
                     /* @var $order \Orderly\PayPalIpnBundle\Entity\IpnOrders */
@@ -132,11 +138,11 @@ class RegisterController extends Controller
                     if ($user->getPaid() + $order->getMcGross() == $event->getPrice()) {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
-
+                        $logger->addDebug('User paid exact.');
                     } elseif ($user->getPaid() + $order->getMcGross() < $event->getPrice()) {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID_NOT_ENOUGH);
-
+                        $logger->addDebug('User paid not enough');
                     } else {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
                             ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
@@ -155,11 +161,11 @@ class RegisterController extends Controller
 
                     $message = \Swift_Message::newInstance()
                         ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
-                        ->setFrom('info@mage-hackathon.de')
+                        ->setFrom('info@magento-hackathon.de')
                         ->setTo($user->getMail())
                         ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:paymentMail.txt.twig', $mailParams));
                     $this->get('mailer')->send($message);
-
+                    $logger->addDebug('mailSent');
                     $em = $this->getDoctrine()->getEntityManager();
 
                     $em->persist($user);
