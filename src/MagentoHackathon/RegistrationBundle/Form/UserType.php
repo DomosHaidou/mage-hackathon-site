@@ -25,6 +25,10 @@ class UserType extends AbstractType
         ->add('address', null, array(
             'label' => 'Address',
         ))
+        ->add('additionalInfos', null, array(
+            'label' => 'c/o, etc.',
+            'required' => false
+        ))
         ->add('zip', null, array(
             'label' => 'Zip',
         ))
@@ -33,10 +37,6 @@ class UserType extends AbstractType
         ))
         ->add('country', 'country', array(
             'label' => 'Country',
-        ))
-        ->add('additionalInfos', null, array(
-            'label' => 'c/o, etc.',
-            'required' => false
         ))
         ->add('githubId', null, array(
             'label' => 'github-ID',
