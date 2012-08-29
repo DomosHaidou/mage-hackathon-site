@@ -17,7 +17,7 @@
     <div class="span4">
         <h2>{{event.name}}</h2>
 
-        <p>{{event.shortDescription}}</p>
+        <p>{{event.shortDescription|raw}}</p>
 
         <p><a class="btn" href="{{path('_event_about', {'eventId': event.eventId})}}">View details &raquo;</a></p>
     </div>
