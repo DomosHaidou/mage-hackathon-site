@@ -3,7 +3,7 @@
 <h1>{{event.name}}</h1>
 <h2>Price: {{event.price}} €</h2>
 <p><a class="btn btn-success btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a></p>
-<p>
+<p><strong>
     {% set countAttendes = event|countAttendes %}
     {% set countCountries = event|countCountries %}
     {% transchoice countAttendes %}
@@ -12,7 +12,7 @@
     {% transchoice countCountries %}
     {0}|{1} from one country |]1,Inf] from %countCountries% countries.
     {% endtranschoice %}
-</p>
+</strong></p>
 
 {{event.description|raw}}
 <p><a class="btn btn-success btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a></p>
