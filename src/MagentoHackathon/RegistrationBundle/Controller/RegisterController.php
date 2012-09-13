@@ -54,10 +54,13 @@ class RegisterController extends Controller
                 );
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
-                    ->setFrom('info@mage-hackathon.de')
-                    ->setTo($user->getMail())
-                    ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams));
+                ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
+                ->setFrom('info@mage-hackathon.de')
+                ->setTo($user->getMail())
+                ->setBody($this->renderView(
+                        'MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams
+                    )
+                );
                 $this->get('mailer')->send($message);
 
                 return $this->redirect($this->generateUrl('_thanks'));
@@ -113,7 +116,8 @@ class RegisterController extends Controller
             // Succeeded, now let's extract the order
             $this->paypal_ipn->extractOrder();
             $logger->addDebug('extractOrder');
-            // And we save the order now (persist and extract are separate because you might only want to persist the order in certain circumstances).
+            // And we save the order now (persist and extract are
+            // separate because you might only want to persist the order in certain circumstances).
             $this->paypal_ipn->saveOrder();
             $logger->addDebug('saveOrder');
             // Now let's check what the payment status is and act accordingly
@@ -132,20 +136,20 @@ class RegisterController extends Controller
                     /* @var $user User */
                     /* @var $vent Event */
                     $user = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:User')
-                        ->find($orderItem->getItemNumber());
+                    ->find($orderItem->getItemNumber());
 
                     $event = $user->getEvent();
                     if ($user->getPaid() + $order->getMcGross() == $event->getPrice()) {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
-                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
+                        ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
                         $logger->addDebug('User paid exact.');
                     } elseif ($user->getPaid() + $order->getMcGross() < $event->getPrice()) {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
-                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID_NOT_ENOUGH);
+                        ->setPaymentStatus(User::PAYMENT_STATUS_PAID_NOT_ENOUGH);
                         $logger->addDebug('User paid not enough');
                     } else {
                         $user->setPaid($user->getPaid() + $order->getMcGross())
-                            ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
+                        ->setPaymentStatus(User::PAYMENT_STATUS_PAID);
                         $logger->addAlert($user->getFirstname() . ' ' . $user->getLastname() . ' paid too much!');
                     }
 
@@ -160,10 +164,13 @@ class RegisterController extends Controller
                     );
 
                     $message = \Swift_Message::newInstance()
-                        ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
-                        ->setFrom('info@magento-hackathon.de')
-                        ->setTo($user->getMail())
-                        ->setBody($this->renderView('MagentoHackathonRegistrationBundle:Register:paymentMail.txt.twig', $mailParams));
+                    ->setSubject('Magento Hackathon: ' . $user->getEvent()->getName())
+                    ->setFrom('info@magento-hackathon.de')
+                    ->setTo($user->getMail())
+                    ->setBody($this->renderView(
+                            'MagentoHackathonRegistrationBundle:Register:paymentMail.txt.twig', $mailParams
+                        )
+                    );
                     $this->get('mailer')->send($message);
                     $logger->addDebug('mailSent');
                     $em = $this->getDoctrine()->getEntityManager();
@@ -174,8 +181,8 @@ class RegisterController extends Controller
 
             }
 
-        } else // Just redirect to the root URL
-        {
+        } else {
+            // Just redirect to the root URL
             return $this->redirect('/');
         }
 

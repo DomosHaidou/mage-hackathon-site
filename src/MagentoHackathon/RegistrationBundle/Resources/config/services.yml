@@ -2,6 +2,12 @@ parameters:
 #    magento_hackathon_registration.example.class: MagentoHackathon\RegistrationBundle\Example
 
 services:
+services:
+    eventService:
+        class: MagentoHackathon\RegistrationBundle\Service\Event
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: twig.extension }
 #    magento_hackathon_registration.example:
 #        class: %magento_hackathon_registration.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
