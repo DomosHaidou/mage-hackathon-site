@@ -68,26 +68,6 @@ class MenuBuilder
         $menu->addChild('Imprint', array('route' => '_imprint'));
 
         return $menu;
-
-
-        $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav pull-right');
-
-        $menu->addChild('User')
-        ->setAttribute('dropdown', true);
-
-        $menu['User']->addChild('Profile', array('uri' => '#'))
-        ->setAttribute('divider_append', true);
-        $menu['User']->addChild('Logout', array('uri' => '#'));
-
-        $menu->addChild('Language')
-        ->setAttribute('dropdown', true)
-        ->setAttribute('divider_prepend', true);
-
-        $menu['Language']->addChild('Deutsch', array('uri' => '#'));
-        $menu['Language']->addChild('English', array('uri' => '#'));
-
-        return $menu;
     }
 }
 
