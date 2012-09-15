@@ -49,7 +49,8 @@ class MenuBuilder
         ->setAttribute('dropdown', true);
 
         $menu['Registration']->addChild('Registration', array('route' => '_registration'));
-        $menu['Registration']->addChild('Project Idea Box', array('route' => '_projectIdea'));
+        $menu['Registration']->addChild('See Ideas from Project Idea Box', array('route' => '_projectIdeaAll'));
+        $menu['Registration']->addChild('Add Idea to Project Idea Box', array('route' => '_projectIdea'));
 
         $events = $this->em->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
         ->where('e.dateFrom > CURRENT_TIMESTAMP()')
