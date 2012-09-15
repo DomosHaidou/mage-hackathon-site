@@ -40,11 +40,16 @@ class MenuBuilder
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttributes(array('class' => 'nav'));
+        $menu->setChildrenAttribute('class', 'nav pull-right');
 
         $menu->addChild('Home', array('route' => '_welcome'));
         $menu->addChild('What is a Magento Hackathon?', array('route' => '_about'));
-        $menu->addChild('Registration', array('route' => '_registration'));
+
+        $menu->addChild('Registration')
+        ->setAttribute('dropdown', true);
+
+        $menu['Registration']->addChild('Registration', array('route' => '_registration'));
+        $menu['Registration']->addChild('Project Idea Box', array('route' => '_projectIdea'));
 
         $events = $this->em->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
         ->where('e.dateFrom > CURRENT_TIMESTAMP()')
@@ -52,7 +57,7 @@ class MenuBuilder
         ->setMaxResults(2)
         ->getQuery()->getResult();
 
-        foreach($events as $event) {
+        foreach ($events as $event) {
             /* @var $event \MagentoHackathon\RegistrationBundle\Entity\Event */
             $menu->addChild($event->getName(), array(
                 'route' => '_event_about',
@@ -61,6 +66,26 @@ class MenuBuilder
         }
 
         $menu->addChild('Imprint', array('route' => '_imprint'));
+
+        return $menu;
+
+
+        $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav pull-right');
+
+        $menu->addChild('User')
+        ->setAttribute('dropdown', true);
+
+        $menu['User']->addChild('Profile', array('uri' => '#'))
+        ->setAttribute('divider_append', true);
+        $menu['User']->addChild('Logout', array('uri' => '#'));
+
+        $menu->addChild('Language')
+        ->setAttribute('dropdown', true)
+        ->setAttribute('divider_prepend', true);
+
+        $menu['Language']->addChild('Deutsch', array('uri' => '#'));
+        $menu['Language']->addChild('English', array('uri' => '#'));
 
         return $menu;
     }
