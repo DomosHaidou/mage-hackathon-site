@@ -7,10 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
-    
+
     public function indexAction()
     {
-        $events = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')->createQueryBuilder('e')
+        $events = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')
+        ->createQueryBuilder('e')
         ->where('e.dateFrom > CURRENT_TIMESTAMP()')
         ->orderBy('e.dateFrom', 'ASC')
         ->setMaxResults(3)
@@ -22,17 +23,19 @@ class DefaultController extends Controller
     /**
      * @Template
      */
-    public function aboutAction() {
+    public function aboutAction()
+    {
         return array();
     }
 
     /**
      * @Template
      */
-    public function eventAboutAction($eventId) {
+    public function eventAboutAction($eventId)
+    {
         $event = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')
         ->find($eventId);
-        if(!$event) {
+        if (!$event) {
             return new \Symfony\Component\HttpFoundation\RedirectResponse($this->generateUrl('_welcome'));
         }
         return array('event' => $event);
@@ -43,7 +46,8 @@ class DefaultController extends Controller
     /**
      * @Template
      */
-    public function imprintAction() {
+    public function imprintAction()
+    {
         return array();
     }
 

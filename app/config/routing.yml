@@ -30,6 +30,14 @@ _ipn:
   pattern:  /ipn
   defaults:  { _controller: MagentoHackathonRegistrationBundle:Register:ipn }
 
+_projectIdea:
+  pattern:  /projectIdea
+  defaults:  { _controller: MagentoHackathonRegistrationBundle:ProjectIdea:index }
+
+_projectIdeaAll:
+  pattern:  /projectIdea/all
+  defaults:  { _controller: MagentoHackathonRegistrationBundle:ProjectIdea:all }
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

@@ -34,5 +34,14 @@ MagentoHackathon\RegistrationBundle\Entity\User:
     eventLegal:
       - "True": { message: "You have to choose an event to register for!" }
 
-
-
+MagentoHackathon\RegistrationBundle\Entity\ProjectIdea:
+  properties:
+      name:
+        - NotBlank: ~
+        - MaxLength: 255
+      description:
+        - NotBlank: ~
+        - MaxLength: 4294967296
+      author:
+        - NotBlank: ~
+        - MaxLength: 255
