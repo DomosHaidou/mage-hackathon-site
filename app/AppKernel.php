@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Ruian\TwitterBootstrapBundle\RuianTwitterBootstrapBundle(),
             new Orderly\PayPalIpnBundle\OrderlyPayPalIpnBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Eko\FeedBundle\EkoFeedBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

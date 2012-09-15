@@ -30,6 +30,13 @@ _ipn:
   pattern:  /ipn
   defaults:  { _controller: MagentoHackathonRegistrationBundle:Register:ipn }
 
+_atom:
+  pattern:  /atomFeed
+  defaults:  { _controller: MagentoHackathonRegistrationBundle:Default:atomFeed }
+
+_rss:
+  pattern:  /rssFeed
+  defaults:  { _controller: MagentoHackathonRegistrationBundle:Default:rssFeed }
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
