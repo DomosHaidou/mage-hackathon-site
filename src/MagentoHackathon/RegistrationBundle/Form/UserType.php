@@ -43,7 +43,7 @@ class UserType extends AbstractType
             'required' => false
         ))
         ->add('memo', null, array(
-            'label' => "Memo, e.g. you are vegetarian",
+            'label' => "Memo, T-Shirt-SIZE!! and other things e.g. you are vegetarian",
             'required' => false
         ));
     }
