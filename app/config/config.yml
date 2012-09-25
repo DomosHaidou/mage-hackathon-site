@@ -111,3 +111,12 @@ services:
         scope: request # needed as we have the request as a dependency here
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
+
+eko_feed:
+    feeds:
+        events:
+            title:       'Magento Hackathon Community Events'
+            description: 'Upcoming Events'
+            link:        'http://www.magento-hackathon.de/'
+            encoding:    'utf-8'
+            author:      'Mage-Hackathon' # Only required for Atom feeds

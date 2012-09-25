@@ -3,11 +3,12 @@
 namespace MagentoHackathon\RegistrationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Eko\FeedBundle\Item\RoutedItemInterface;
 
 /**
  * MagentoHackathon\RegistrationBundle\Entity\Event
  */
-class Event
+class Event implements RoutedItemInterface
 {
 
     /**
@@ -236,10 +237,65 @@ class Event
     /**
      * Get paypalEmail
      *
-     * @return string 
+     * @return string
      */
     public function getPaypalEmail()
     {
         return $this->paypalEmail;
+    }
+
+    /**
+     * This method returns feed item title
+     *
+     *
+     * @return string
+     */
+    public function getFeedItemTitle()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * This method returns feed item description (or content)
+     *
+     *
+     * @return string
+     */
+    public function getFeedItemDescription()
+    {
+        return $this->getDescription();
+    }
+
+    /**
+     * This method returns item publication date
+     *
+     *
+     * @return \DateTime
+     */
+    public function getFeedItemPubDate()
+    {
+        return new \DateTime();
+    }
+
+    /**
+     * This method returns the name of the route
+     *
+     *
+     * @return string
+     */
+    public function getFeedItemRouteName()
+    {
+        return '_event_about';
+    }
+
+    /**
+     * This method returns the parameters for the route.
+     *
+     *
+     * @return array
+     */
+    public function getFeedItemRouteParameters()
+    {
+        return array('eventId' => $this->getEventId());
     }
 }

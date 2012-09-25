@@ -4,6 +4,7 @@ namespace MagentoHackathon\RegistrationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use \Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -28,6 +29,28 @@ class DefaultController extends Controller
         return array();
     }
 
+    public function rssFeedAction()
+    {
+        return $this->getFeed('rss');
+    }
+    
+    public function atomFeedAction()
+    {
+        return $this->getFeed('atom');
+
+    }
+
+    protected function getFeed($type)
+    {
+        $events = $this->getDoctrine()->getRepository('MagentoHackathonRegistrationBundle:Event')->findAll();
+
+        $feed = $this->get('eko_feed.feed.manager')->get('events');
+        $feed->addFromArray($events);
+
+        return new Response($feed->render($type));
+    }
+
+
     /**
      * @Template
      */
@@ -41,8 +64,6 @@ class DefaultController extends Controller
         return array('event' => $event);
     }
 
-
-
     /**
      * @Template
      */
@@ -50,5 +71,4 @@ class DefaultController extends Controller
     {
         return array();
     }
-
 }
