@@ -71,4 +71,3 @@ class MenuBuilder
         return $menu;
     }
 }
-
