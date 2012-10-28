@@ -3,12 +3,12 @@
 <div class="row">
     <div class="offset2 span8">
 
-        {% include 'RuianTwitterBootstrapBundle:Alert:bootstrap_v2.html.twig' %}
+        {% include 'MopaBootstrapBundle:flash.html.twig' %}
 
-        {% form_theme form 'RuianTwitterBootstrapBundle:Form:bootstrap_v2.html.twig' %}
+        {% form_theme myform 'MopaBootstrapBundle:Form:fields.html.twig' %}
         <form class="form-horizontal well" method="post" action="{{ path('_projectIdea') }}">
             <legend>Add idea to the Project Idea Box</legend>
-            {{ form_widget(form) }}
+            {{ form_widget(myform) }}
             <div class="form-actions">
                 <input type="submit" value="Register" class="btn"/>
             </div>

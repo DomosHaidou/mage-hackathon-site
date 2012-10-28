@@ -36,7 +36,7 @@ class ProjectIdeaController extends Controller
             }
         }
 
-        return array('form' => $form->createView());
+        return array('myform' => $form->createView());
     }
 
     /**
