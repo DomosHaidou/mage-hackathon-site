@@ -1,4 +1,6 @@
 {% extends "::base.html.twig" %}
+{% block headline %}
+{% endblock headline %}
 {% block content %}
 {% if user.paymentStatus == constant('MagentoHackathon\\RegistrationBundle\\Entity\\User::PAYMENT_STATUS_PAID') %}
         <p>Thanks for your registration, your payment is complete.</p>
