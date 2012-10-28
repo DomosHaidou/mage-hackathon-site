@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+    <img src="/img/logo.png" alt="logo"/>
+    <p><a href="{{path('_about')}}">Learn more about the Magento Hackathons</a> and <a href="{{path('_registration')}}">register</a>
+        to be part of a Magento Hackathon.</p>
+
+    <p><a class="btn btn-primary btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a>
+    </p>
+</div>
+
+{% if events %}
+<div class="row">
+    {% for event in events %}
+    <div class="span4">
+        <h2>{{event.name}}</h2>
+        <p>Price: {{event.price}} €</p>
+        <p>{{event.shortDescription|raw}}</p>
+
+        <p><a class="btn" href="{{path('_event_about', {'eventId': event.eventId})}}">View details &raquo;</a></p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

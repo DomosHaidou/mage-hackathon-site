@@ -1,0 +1,31 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+{% block head_style %}
+    {# Override this block to add your own files! #}
+    {% stylesheets filter='?yui_css'
+    '@MopaBootstrapBundle/Resources/public/sass/mopabootstrapbundle.scss'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen"/>
+    {% endstylesheets %}
+    {# To use this without less use the base_css.html.twig template as your base
+     # Be sure you understand whats going on: have a look into
+     # https://github.com/phiamo/MopaBootstrapBundle/blob/master/Resources/doc/css-vs-less.md
+     #}
+{% endblock head_style %}
+
+
+{% block content %}
+    <div class="span9">
+        {% block left %}
+            <strong>Hier könnte Ihre Werbung stehen ... </strong>
+        {% endblock left %}
+    </div>
+    <div class="span3">
+        {% block content_sidebar %}
+            {% block right %}
+            {% endblock right %}
+        {% endblock content_sidebar %}
+    </div>
+{% endblock content %}
+{% block footer %}
+    Fabian Blechschmidt, Crailsheimer Str. 10, 12247 Berlin
+{% endblock footer %}

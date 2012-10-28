@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+<h1>{{event.name}}</h1>
+<h2>Price: {{event.price}} €</h2>
+<p><a class="btn btn-success btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a></p>
+<p><strong>
+    {% set countAttendes = event|countAttendes %}
+    {% set countCountries = event|countCountries %}
+    {% transchoice countAttendes %}
+    {0} No registrations yet.|{1} We have one registration|]1,Inf] At the moment we have  %countAttendes% registrations
+    {% endtranschoice %}
+    {% transchoice countCountries %}
+    {0}|{1} from one country |]1,Inf] from %countCountries% countries.
+    {% endtranschoice %}
+</strong></p>
+
+{{event.description|raw}}
+<p><a class="btn btn-success btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a></p>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+<div class="row">
+    <div class="offset2 span8">
+
+        {% include 'RuianTwitterBootstrapBundle:Alert:bootstrap_v2.html.twig' %}
+
+        {% form_theme form 'RuianTwitterBootstrapBundle:Form:bootstrap_v2.html.twig' %}
+        <form class="form-horizontal well" method="post" action="{{ path('_registration') }}">
+            <legend>Registration for Magento Community-Event</legend>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <input type="submit" value="Register" class="btn"/>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
