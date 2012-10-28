@@ -1,3 +1,0 @@
-MagentoHackathonRegistrationBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: MagentoHackathonRegistrationBundle:Default:index }

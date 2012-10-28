@@ -1,8 +1,0 @@
-{% extends "::base.html.twig" %}
-{% block content %}
-    <h1>Project Ideas</h1>
-{% for idea in projectIdeas %}
-        <h2><strong>{{idea.name}}</strong> ({{idea.author}})</h2>
-        <p>{{idea.description|e|replace({"\n\n": '</p><p>', "\r\n\r\n": '</p><p>', "\r\r": '</p><p>'})|raw}}</p>
-{% endfor %}
-{% endblock %}
