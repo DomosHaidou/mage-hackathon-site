@@ -1,10 +1,11 @@
 {% extends 'MopaBootstrapBundle::base.html.twig' %}
 {% block head_style %}
     {# Override this block to add your own files! #}
+
     {% stylesheets filter='?yui_css'
-    '@MopaBootstrapBundle/Resources/public/sass/mopabootstrapbundle.scss'
-    %}
-    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen"/>
+    '@MopaBootstrapBundle/Resources/public/sass/mopabootstrapbundle.scss' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet"
+          media="screen" />
     {% endstylesheets %}
     {# To use this without less use the base_css.html.twig template as your base
      # Be sure you understand whats going on: have a look into

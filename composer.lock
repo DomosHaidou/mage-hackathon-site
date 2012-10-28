@@ -1,5 +1,5 @@
 {
-    "hash": "b83071df39c6be3287dab539a546ae9b",
+    "hash": "5d01cb428e280a46fa18e3997c6461a5",
     "packages": [
         {
             "name": "craue/formflow-bundle",
@@ -1568,6 +1568,24 @@
             ]
         },
         {
+            "name": "thomas-mcdonald/bootstrap-sass",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomas-mcdonald/bootstrap-sass.git",
+                "reference": "master"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thomas-mcdonald/bootstrap-sass/zipball/master",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "installation-source": "source",
+            "time": "1351246908"
+        },
+        {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
@@ -1693,6 +1711,7 @@
         "knplabs/knp-menu-bundle": 20,
         "craue/formflow-bundle": 20,
         "orderly/paypal-ipn-bundle": 20,
-        "eko/feedbundle": 20
+        "eko/feedbundle": 20,
+        "thomas-mcdonald/bootstrap-sass": 20
     }
 }

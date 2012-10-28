@@ -25,8 +25,9 @@
         "knplabs/knp-paginator-bundle":"dev-master",
         "knplabs/knp-menu-bundle":"dev-master",
         "craue/formflow-bundle":"dev-master",
-        "orderly/paypal-ipn-bundle": "dev-master",
-        "eko/feedbundle": "dev-master"
+        "orderly/paypal-ipn-bundle":"dev-master",
+        "eko/feedbundle":"dev-master",
+        "thomas-mcdonald/bootstrap-sass":"dev-master"
     },
 
     "repositories":[
@@ -42,6 +43,22 @@
                 },
                 "dist":{
                     "url":"https://github.com/twitter/bootstrap/zipball/master",
+                    "type":"zip"
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package":{
+                "version":"dev-master",
+                "name":"thomas-mcdonald/bootstrap-sass",
+                "source":{
+                    "url":"https://github.com/thomas-mcdonald/bootstrap-sass.git",
+                    "type":"git",
+                    "reference":"master"
+                },
+                "dist":{
+                    "url":"https://github.com/thomas-mcdonald/bootstrap-sass/zipball/master",
                     "type":"zip"
                 }
             }
