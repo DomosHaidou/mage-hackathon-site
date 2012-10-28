@@ -2,9 +2,6 @@
 {% block content %}
 <div class="row">
     <div class="offset2 span8">
-
-        {% include 'MopaBootstrapBundle:flash.html.twig' %}
-
         {% form_theme myform 'MopaBootstrapBundle:Form:fields.html.twig' %}
         <form class="form-horizontal well" method="post" action="{{ path('_projectIdea') }}">
             <legend>Add idea to the Project Idea Box</legend>
