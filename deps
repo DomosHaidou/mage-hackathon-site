@@ -92,3 +92,7 @@
 [EkoFeedBundle]
     git=https://github.com/eko/FeedBundle.git
     target=/bundles/Eko/FeedBundle
+
+[PayPalIPN]
+    git=https://github.com/orderly/symfony2-paypal-ipn.git
+    target=/orderly/
