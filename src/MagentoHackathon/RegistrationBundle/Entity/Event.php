@@ -17,6 +17,18 @@ class Event implements RoutedItemInterface
     private $participants;
 
     /**
+     * This method returns the anchor to be appended on this item's url
+     *
+     *
+     * @return string The anchor, without the "#"
+     */
+    public function getFeedItemUrlAnchor()
+    {
+        // TODO: Implement getFeedItemUrlAnchor() method.
+        return '';
+    }
+
+    /**
      * @var datetime $dateFrom
      */
     private $dateFrom;
