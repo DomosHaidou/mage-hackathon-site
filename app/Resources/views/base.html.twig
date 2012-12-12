@@ -2,8 +2,9 @@
 
 {% block foot_script %}
     {%- javascripts
-    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
-    'Resources/public/js/bootstrap.min.js' %}
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+        '%kernel.root_dir%/Resources/public/js/bootstrap.min.js'
+    %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock foot_script %}
@@ -11,8 +12,8 @@
 
 {% block head_style %}
     {% stylesheets
-    'Resources/public/css/bootstrap.css'
-    'Resources/public/css/bootstrap-responsive.css' %}
+        '%kernel.root_dir%/Resources/public/css/bootstrap.css'
+    %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock head_style %}
