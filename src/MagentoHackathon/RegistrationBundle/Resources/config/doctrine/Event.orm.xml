@@ -11,6 +11,7 @@
     <field name="dateFrom" type="datetime" column="date_from"/>
     <field name="dateTo" type="datetime" column="date_to"/>
     <field name="price" type="float" column="price"/>
+    <field name="currency_code" type="string" column="currency_code" length="3"/>
     <field name="paypalEmail" type="string" column="paypal_email" length="320"/>
     <lifecycle-callbacks/>
   </entity>

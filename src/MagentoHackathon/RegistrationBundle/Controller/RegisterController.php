@@ -61,7 +61,7 @@ class RegisterController extends Controller
                         'MagentoHackathonRegistrationBundle:Register:registrationMail.txt.twig', $mailParams
                     )
                 );
-                $this->get('mailer')->send($message);
+//                $this->get('mailer')->send($message);
 
                 return $this->redirect($this->generateUrl('_thanks'));
             }
