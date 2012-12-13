@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 {% block content %}
 <h1>{{event.name}}</h1>
-<h2>Price: {{event.price}} €</h2>
+<h2>Price: {{event.price}} {{event.currencyCode}}</h2>
 <p><a class="btn btn-success btn-large" href="{{path('_registration')}}">Register for the next Hackathon &raquo;</a></p>
 <p><strong>
     {% set countAttendes = event|countAttendes %}
