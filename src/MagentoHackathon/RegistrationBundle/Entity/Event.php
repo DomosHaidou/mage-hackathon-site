@@ -61,6 +61,11 @@ class Event implements RoutedItemInterface
     private $price;
 
     /**
+     * @var string $currency_code
+     */
+    private $currency_code;
+
+    /**
      * @var integer $eventId
      */
     private $eventId;
@@ -143,6 +148,16 @@ class Event implements RoutedItemInterface
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Get currency code
+     *
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currency_code;
     }
 
     /**
